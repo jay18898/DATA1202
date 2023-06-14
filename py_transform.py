@@ -43,13 +43,12 @@ raw_df.loc[(raw_df['price'] >= 200), "price_group"] = "expensive"
 #   Drop/add columns
 #   Remove column "host_name"
 
-selected_cols = raw_df[['host_name', 'price_group', 'neighbourhood_group']]
-print(selected_cols.head())
+selected_cols = raw_df[['host_name', 'price_group', 'neighbourhood_group','room_type','price']]
 
 #   Perform joins
 #   Aggregates  = Group By
 #   Whats the average price by room type by neighbourhood
-selected_cols.groupby(['neighbourhood_group', 'room_type'])['price'].mean()
+print(selected_cols.groupby(['neighbourhood_group', 'room_type'])['price'].mean().reset_index())
 
 #   LOAD
 #   Write the data to a table, or a view.
